@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+    <link rel="icon" href="Logo1.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+<!--=========== Header Start ==========-->
+<header>
+    <section class="header-area">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="#"><img src="medinetexp.png" alt="Medinet"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/volunteers">Health Guides</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/articles">Store</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/faq">FAQ</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex header-buttons mb-2">
+                        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+                        <a href="http://localhost:9090/register" class="btn btn-outline-info mr-1">Sign Up</a>
+                        <a href="http://localhost:9090/login" class="btn btn-outline-info">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+</header>
+
+
+<!--=========== Header End ==========-->
+
+
+
+<!--=========== SignUp Area Start ==========-->
+<section class="signup">
+    <div class="container">
+        <div class="row signup-area">
+            <div class="col-lg-12">
+                <form id="signup_form" method=post class="form" action="action_page.php" th:action="@{/postSignup}" th:object="${user}">
+                    <div class="signup-content">
+                        <h2 class="title">Sign Up</h2>
+                        <p>Please fill in this form to create an account.</p>
+                        <hr>
+
+                        <!-- <input type="text" placeholder="Full Name" id=name name="fullname">-->
+
+                        <input type="text" placeholder=" Email" id=signupEmail name="email" th:field="*{email}" required>
+
+                        <input type="password" placeholder="Set your password" id=signupPassword name="psw" th:field="*{password}"required>
+
+                        <input type="password" placeholder="Confirm password" id=signupRepeat name="psw-repeat" th:field="*{confirmPassword}" required>
+
+                        <label>
+                            <input type="checkbox" name="remember" style="margin-bottom:15px"> I have read and agree to the
+                            <a href="#">Terms & Conditions of Medinet Platform</a>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="consent" style="margin-bottom:15px"> Remember me
+                        </label>
+                        <br>
+                        <button class="btn btn-info" type="submit">Sign Up</button>
+                    </div>
+                </form>
+                <div class="text-center pt-3" >
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=========== SignUp Area End ==========-->
+
+
+<!--=========== Footer Start ==========-->
+<footer class="text-center text-white fixed-bottom " style="background-color: #21081a;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">MediNet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Store</a>
+                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link disabled">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</footer>
+<!--=========== Footer End ==========-->
+
+<!--<script type="text/javascript">-->
+<!--    function validation(){-->
+<!--        var form = document.getElementById("signup_form");-->
+<!--        var email = document.getElementById("signupEmail").value;-->
+<!--        var text = document.getElementById("text");-->
+<!--        var confirm = document.getElementById("signupRepeat");-->
+<!--        var pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/;-->
+
+<!--        if(email.matches(pattern)){-->
+<!--            form.classList.add("valid");-->
+<!--            form.classList.remove("invalid");-->
+<!--            text.innerHTML = "Your Email is valid";-->
+<!--            text.style.color = "#00ff00";-->
+<!--        }-->
+<!--        else{-->
+<!--            form.classList.remove("valid");-->
+<!--            form.classList.add("invalid");-->
+<!--            text.innerHTML = "Please enter valid Email Address";-->
+<!--            text.style.color = "#ff0000";-->
+<!--        }-->
+
+<!--        if(email == ""){-->
+<!--            form.classList.add("valid");-->
+<!--            form.classList.remove("invalid");-->
+<!--            text.innerHTML = "";-->
+<!--            text.style.color = "#00ff00";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<script src="Signup_js.js"></script>
+</body>
+</html>
