@@ -1,8 +1,10 @@
 package com.example.medinet_project.Controller;
 
+import com.example.medinet_project.Model.Buyer;
 import com.example.medinet_project.Model.Cart;
 import com.example.medinet_project.Model.Medicine;
 import com.example.medinet_project.Model.Temporary;
+import com.example.medinet_project.Repository.BuyerRepository;
 import com.example.medinet_project.Repository.CartRepository;
 import com.example.medinet_project.Repository.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class MedicineController {
     MedicineRepository medicineRepository;
     @Autowired
     CartRepository cartRepository;
+    @Autowired
+    BuyerRepository buyerRepository;
     @GetMapping("/store")
     public String getMedicine(Model model) {
         List<Medicine> medicineList=medicineRepository.findMedicine();
@@ -44,27 +48,27 @@ public class MedicineController {
         medicines=medicineRepository.findMedicine();
         int subTotal=1;
         cartList=cartRepository.findbyEmail(temporary.getEmail());
-        for (int i=0; i<cartList.size();i++){
-            int getPId=cartList.get(i).cartId;
-            for(int j=0;j<medicines.size();j++){
-                if(getPId==medicines.get(j).id){
+        for (int i=0; i<cartList.size();i++) {
+            int getPId = cartList.get(i).cartId;
+            for (int j = 0; j < medicines.size(); j++) {
+                if (getPId == medicines.get(j).id) {
                     medicineListforCart.add(medicines.get(j));
                     //cart er quantity ke medicine er product quantity te newa+ type changed from string to int
-                    try{
+                    try {
                         medicines.get(j).productQuantity = Integer.parseInt(cartList.get(i).quantity);
                         //subTotal;
-                        int priceINT=Integer.parseInt(medicines.get(j).price);
-                        subTotal=subTotal+(medicines.get(j).productQuantity * priceINT);
-                    }
-                    catch (NumberFormatException ex){
+                        int priceINT = Integer.parseInt(medicines.get(j).price);
+
+                        subTotal = subTotal + (medicines.get(j).productQuantity * priceINT);
+                    } catch (NumberFormatException ex) {
                         ex.printStackTrace();
                     }
                 }
             }
-
         }
         System.out.println(subTotal);
         subTotal=subTotal-1;
+
         String s=String.valueOf(subTotal);
         System.out.println(s);
         model.addAttribute("s",s);

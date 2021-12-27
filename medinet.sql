@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 10:12 PM
+-- Generation Time: Dec 27, 2021 at 11:12 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -43,6 +43,31 @@ INSERT INTO `admin` (`id`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `buyer`
+--
+
+CREATE TABLE `buyer` (
+  `id` int(11) NOT NULL,
+  `email` text NOT NULL,
+  `name` text NOT NULL,
+  `number` text NOT NULL,
+  `address` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `buyer`
+--
+
+INSERT INTO `buyer` (`id`, `email`, `name`, `number`, `address`) VALUES
+(1, '', 'gg', 'gg', 'gg'),
+(2, 'hh@hh.com', 'hhh', 'hhh', 'hhhh'),
+(3, 'name@gmail.com', 'name', '000', 'add'),
+(4, 'name@gmail.com', 'nn', 'nn', 'nn'),
+(5, 'name@gmail.com', 'gg', 'gg', 'gg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cart`
 --
 
@@ -58,43 +83,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `email`, `pid`, `quantity`) VALUES
-(1, 'username@gmail.com', 46, '2'),
-(2, 'username@gmail.com', 46, '10'),
-(3, 'temporary.getEmail()', 46, '20'),
-(4, 'temporary.getEmail()', 46, '20'),
-(5, 'username@gmail.com', 46, '20'),
-(6, 'username@gmail.com', 46, '10'),
-(7, 'username@gmail.com', 46, '30'),
-(8, 'username@gmail.com', 46, '10'),
-(9, 'username@gmail.com', 46, '10'),
-(10, 'username@gmail.com', 46, '10'),
-(11, 'username@gmail.com', 46, '10'),
-(12, 'username@gmail.com', 46, '10'),
-(13, 'username@gmail.com', 46, '20'),
-(14, 'username@gmail.com', 46, '20'),
-(15, 'username@gmail.com', 46, '10'),
-(16, 'username@gmail.com', 46, '10'),
-(17, 'username@gmail.com', 46, '10'),
-(18, 'username@gmail.com', 46, '10'),
-(19, 'username@gmail.com', 46, '10'),
-(20, 'username@gmail.com', 46, '10'),
-(21, 'username@gmail.com', 46, '10'),
-(22, 'username@gmail.com', 46, '10'),
-(23, 'username@gmail.com', 46, '10'),
-(24, 'username@gmail.com', 46, '10'),
-(25, 'username@gmail.com', 46, '10'),
-(26, 'username@gmail.com', 46, '10'),
-(27, 'username@gmail.com', 46, '10'),
-(28, 'username@gmail.com', 46, '30'),
-(29, 'username@gmail.com', 63, '10'),
-(30, 'username@gmail.com', 64, '10'),
-(31, 'username@gmail.com', 63, '10'),
-(32, 'username@gmail.com', 63, '10'),
-(33, 'username@gmail.com', 75, '10'),
-(34, 'username@gmail.com', 64, '10'),
-(35, 'username@gmail.com', 67, '10'),
-(36, 'username@gmail.com', 64, '10'),
-(37, 'username@gmail.com', 64, '10');
+(45, 'name@gmail.com', 64, '10'),
+(46, 'name@gmail.com', 64, '10'),
+(47, 'name@gmail.com', 67, '10'),
+(48, 'name@gmail.com', 64, '10');
 
 -- --------------------------------------------------------
 
@@ -157,7 +149,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `confirm_password`) VALUES
 (1, 'username@gmail.com', '1234', '1234'),
 (2, 'name@gmail.com', '1234', '1234'),
-(3, 'admin@admin.com', '1234', '1234');
+(3, 'admin@admin.com', '1234', '1234'),
+(4, 'mm@mm.com', '1234', '1234'),
+(5, 'hh@hh.com', '1234', '1234'),
+(6, 'name@gmail.com', '1234', '1234');
 
 --
 -- Indexes for dumped tables
@@ -167,6 +162,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `confirm_password`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `buyer`
+--
+ALTER TABLE `buyer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -204,10 +205,16 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 
 --
+-- AUTO_INCREMENT for table `buyer`
+--
+ALTER TABLE `buyer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `medicine`
@@ -225,7 +232,7 @@ ALTER TABLE `seller`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

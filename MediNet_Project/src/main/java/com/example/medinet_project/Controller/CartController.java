@@ -1,7 +1,10 @@
 package com.example.medinet_project.Controller;
 
+import com.example.medinet_project.Model.Buyer;
 import com.example.medinet_project.Model.Cart;
 import com.example.medinet_project.Model.Medicine;
+import com.example.medinet_project.Model.Temporary;
+import com.example.medinet_project.Repository.BuyerRepository;
 import com.example.medinet_project.Repository.MedicineRepository;
 import com.example.medinet_project.Repository.UserRepository;
 import com.example.medinet_project.Request.Signup_request;
@@ -19,6 +22,8 @@ public class CartController {
     Signup_request signup_request;
     @Autowired
     MedicineRepository medicineRepository;
+    @Autowired
+    BuyerRepository buyerRepository;
 
     @GetMapping("/cart")
     public String getCart(Model model) {
@@ -29,11 +34,18 @@ public class CartController {
 //        store 1 ar cart 1 pathano
 
     @PostMapping("/postCart")
-    public String postCart(Cart cart,Model model){
+    public String postCart(Model model){
+        Buyer buyer=new Buyer();
+        model.addAttribute(buyer);
         return "proceedOrder";
     }
-    @GetMapping("/proceedOrder")
-    public String getProceedOrder(Model model) {
-        return "proceedOrder";
+    @PostMapping("/confirmOrder")
+    public String confirmOrder(Buyer buyer, Model model){
+        Temporary tempBuyer=new Temporary();
+        buyer.email=tempBuyer.getEmail();
+        buyerRepository.save(buyer);
+        return "Confirmation";
+
     }
+
 }

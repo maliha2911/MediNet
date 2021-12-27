@@ -1,5 +1,6 @@
 package com.example.medinet_project.Repository;
 
+import com.example.medinet_project.Model.Cart;
 import com.example.medinet_project.Model.Medicine;
 import com.example.medinet_project.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +16,9 @@ public interface MedicineRepository extends JpaRepository<Medicine,Integer> {
     Optional<Medicine> findById(Integer integer);
     @Query(value = "select * from medicine", nativeQuery = true)
     public List<Medicine> findMedicine();
+    @Query(value = "select * from medicine where id=:pid", nativeQuery = true)
+    public List<Medicine> findByPid(int pid);
+
+
 
 }

@@ -24,8 +24,12 @@ public class IndexController {
 
     //homepage
     @GetMapping("/home")
-    public String getIndex_reg(Model model) {
+    public String getIndex(Model model) {
         return "index";
+    }
+    @GetMapping("/faq")
+    public String getFaq(Model model) {
+        return "faq";
     }
     //Signup_Receiving
     @GetMapping("/register")

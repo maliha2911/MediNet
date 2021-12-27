@@ -15,6 +15,7 @@ public interface CartRepository extends JpaRepository<Cart,Integer> {
     Optional<Cart> findById(Integer integer);
     @Query(value = "select * from cart where email=:em", nativeQuery = true)
     public List<Cart> findbyEmail(String em);
-
+    @Query(value = "select * from cart", nativeQuery = true)
+    public List<Cart> findByAll();
 
 }
