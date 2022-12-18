@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 11:12 PM
+-- Generation Time: Dec 30, 2021 at 07:31 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -59,11 +59,7 @@ CREATE TABLE `buyer` (
 --
 
 INSERT INTO `buyer` (`id`, `email`, `name`, `number`, `address`) VALUES
-(1, '', 'gg', 'gg', 'gg'),
-(2, 'hh@hh.com', 'hhh', 'hhh', 'hhhh'),
-(3, 'name@gmail.com', 'name', '000', 'add'),
-(4, 'name@gmail.com', 'nn', 'nn', 'nn'),
-(5, 'name@gmail.com', 'gg', 'gg', 'gg');
+(9, 'trial@gmail.com', 'trialname', '11111', 'dhaka');
 
 -- --------------------------------------------------------
 
@@ -73,9 +69,9 @@ INSERT INTO `buyer` (`id`, `email`, `name`, `number`, `address`) VALUES
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `email` text NOT NULL DEFAULT 'abc',
-  `pid` int(11) NOT NULL DEFAULT 0,
-  `quantity` text NOT NULL DEFAULT '10'
+  `email` text NOT NULL,
+  `pid` int(11) NOT NULL,
+  `quantity` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,10 +79,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `email`, `pid`, `quantity`) VALUES
-(45, 'name@gmail.com', 64, '10'),
-(46, 'name@gmail.com', 64, '10'),
-(47, 'name@gmail.com', 67, '10'),
-(48, 'name@gmail.com', 64, '10');
+(56, 'trial@gmail.com', 63, '10'),
+(57, 'trial@gmail.com', 67, '20');
 
 -- --------------------------------------------------------
 
@@ -114,7 +108,8 @@ INSERT INTO `medicine` (`id`, `name`, `price`, `exp`, `amount`, `description`, `
 (64, 'Seclo 20 20mg', '5', '22-Dec', '11', 'Capsule  Generic: Omeprazole  Square Pharmaceuticals Ltd.', 0, 'Product2.jpg'),
 (67, 'Calbo D 500mg+200 IU', '189', '22-Dec', '11', 'Tablet  Generic: Calcium  Square Pharmaceuticals Ltd.', 0, 'Product3.jpg'),
 (75, 'Vigogel Ointment', '158', '22-Dec', '11', 'Generic: Tila Jadeed Ibn Sina Pharmaceutical Ind. Ltd.', 0, 'Ointment.jpg'),
-(80, 'Tasty Saline', '5', '22-Dec', '0', 'Powder Universal Food Ltd.', 0, 'Prod5.jpg');
+(80, 'Tasty Saline', '5', '22-Dec', '0', 'Powder Universal Food Ltd.', 0, 'Prod5.jpg'),
+(82, 'E-Cap 400', '5', '22-Dec', '13', 'Generic: Vitaimin E', 0, 'ecap.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,12 +142,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `confirm_password`) VALUES
-(1, 'username@gmail.com', '1234', '1234'),
-(2, 'name@gmail.com', '1234', '1234'),
 (3, 'admin@admin.com', '1234', '1234'),
-(4, 'mm@mm.com', '1234', '1234'),
-(5, 'hh@hh.com', '1234', '1234'),
-(6, 'name@gmail.com', '1234', '1234');
+(10, 'trial@gmail.com', '1234', '1234'),
+(11, 'trial@gmail.com', '1234', '1234');
 
 --
 -- Indexes for dumped tables
@@ -208,19 +200,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `buyer`
 --
 ALTER TABLE `buyer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `medicine`
 --
 ALTER TABLE `medicine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `seller`
@@ -232,7 +224,7 @@ ALTER TABLE `seller`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

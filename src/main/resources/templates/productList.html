@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>medinet</title>
+    <link rel="icon" href="Logo1.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="cart1.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<!--=========== Header Start ==========-->
+<header>
+    <section class="header-area">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="#"><img src="medinetexp.png" alt="Medinet" width="110" height="40"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/volunteers">Health Guides</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/store}">Store</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/faq}">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+</header>
+<!--=========== Header End ==========-->
+<h2>All Products</h2>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-primary" th:href="@{/adminForm}" role="button"> Upload a new Product </a>
+        </div>
+    </div>
+</div>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Exp Date</th>
+
+    </tr>
+    <tr th:each="medicine: ${medicines}">
+        <td th:text="${medicine.id}" />
+        <td th:text="${medicine.name}" />
+        <td th:text="${medicine.price}" />
+        <td th:text="${medicine.amount}" />
+        <td th:text="${medicine.description}" />
+        <td th:text="${medicine.exp}" />
+
+        <td><a th:href="@{/productList/delete/{id}(id=${medicine.id})}">Delete</a></td>
+
+    </tr>
+</table>
+
+</body>
+</html>
