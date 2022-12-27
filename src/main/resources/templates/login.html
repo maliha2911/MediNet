@@ -71,6 +71,7 @@
                         </label>
                         <br>
                         <button class="btn btn-info" type="submit">Login</button>
+                        <a th:href="@{/oauth2/authorization/google}">Login with Google</a>
                         <div class=" pt-3" >
                             Forgot
                             <a href="#">Password?</a>
@@ -79,7 +80,7 @@
                 </form>
                 <div class="text-center pt-3" >
                     Don't have an account?
-                    <a href="http://localhost:8080/register">SignUp</a>
+                    <a th:href=@{/register}>SignUp</a>
                 </div>
             </div>
         </div>

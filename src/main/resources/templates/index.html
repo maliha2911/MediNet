@@ -41,8 +41,8 @@
                     </ul>
                     <div class="d-flex header-buttons mb-2">
                         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-                        <a href="http://localhost:9090/register" class="btn btn-outline-info mr-1">Sign Up</a>
-                        <a href="http://localhost:9090/login" class="btn btn-outline-info">Sign In</a>
+                        <a th:href="@{/register}" class="btn btn-outline-info mr-1">Sign Up</a>
+                        <a th:href="@{/login}" class="btn btn-outline-info">Sign In</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,8 @@
             <img src="trial3.jpg" class="d-block w-100" height="450" width="800" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h2>Need Emergency Medicine? </h2>
-                <button type="button" class="btn btn-success">Order Now</button>
+                <a th:href="@{/login}" class="btn btn-outline-info">Order Now</a>
+<!--                <button type="button" class="btn btn-success">Order Now</button>-->
             </div>
         </div>
         <div class="carousel-item">

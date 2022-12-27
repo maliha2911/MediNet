@@ -9,6 +9,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id")
     public int id;
+    @Column(name="name")
+    public String name;
 
     @Column(name="email")
     public String email;
@@ -24,6 +26,17 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enabled;
+    @Column(name = "provider")
+    @Enumerated(EnumType.STRING)
+    public Provider provider;
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
 
 
     public int getId() {
@@ -32,6 +45,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

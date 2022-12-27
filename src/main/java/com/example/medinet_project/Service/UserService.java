@@ -1,5 +1,6 @@
 package com.example.medinet_project.Service;
 
+import com.example.medinet_project.Model.Provider;
 import com.example.medinet_project.Model.User;
 import com.example.medinet_project.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,18 @@ public class UserService {
     }
     public List<User> getAllUser(){
         return userRepository.findAll();
+    }
+    public void processOAuthPostLogin(String email) {
+        User existUser = userRepository.getUserByUsername(email);
+
+        if (existUser == null) {
+            User newUser = new User();
+            newUser.setName(existUser.name);
+            newUser.setProvider(Provider.GOOGLE);
+            newUser.setEnabled(true);
+
+            userRepository.save(newUser);
+        }
+
     }
 }
